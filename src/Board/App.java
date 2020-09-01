@@ -2,7 +2,10 @@ package Board;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Collections;
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 import java.util.Date;
 import java.util.Scanner;
 
@@ -10,7 +13,10 @@ public class App {
 
 	ArticleDao dao = new ArticleDao();
 	MemberManage mm = new MemberManage();
+<<<<<<< HEAD
 	LikeDao ld = new LikeDao();
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 	
 	void print(ArrayList<Article> articles) {
 		
@@ -22,8 +28,11 @@ public class App {
     		System.out.println("내용 : " + article.getBody());
     		System.out.println("작성자 : " + article.getWriter());
     		System.out.println("작성일 : " + article.getRegDate());
+<<<<<<< HEAD
 			System.out.println("조회수 : " + article.getViewsmanage());
 			System.out.println("좋아요 : " + article.getLikemanage() + " / 싫어요 : " + article.getUnlikemanage());
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
     		System.out.println("");
 		}
 	}
@@ -34,8 +43,11 @@ public class App {
 		System.out.println("제목 : " + article.getTitle());
 		System.out.println("내용 : " + article.getBody());
 		System.out.println("작성자 : " + article.getWriter());
+<<<<<<< HEAD
 		System.out.println("조회수 : " + article.getViewsmanage());
 		System.out.println("좋아요 : " + article.getLikemanage() + " / 싫어요 : " + article.getUnlikemanage());
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 		System.out.println("");
 
 		ArrayList<Reply> reply = article.getReplies();
@@ -95,6 +107,7 @@ public class App {
 				System.out.println("");
 				System.out.println("아이디를 입력해주십시오.");
 				Id = sc.nextLine();
+<<<<<<< HEAD
 				Article a = mm.getMemberById(Id);
 				if(a == null) {
 					System.out.println("비밀번호를 입력해주십시오.");
@@ -113,6 +126,20 @@ public class App {
 				else {
 					System.out.println("있는 아이디입니다.");
 				}
+=======
+				System.out.println("비밀번호를 입력해주십시오.");
+				Pw = sc.nextLine();
+				System.out.println("이름을 입력해주십시오.");
+				name = sc.nextLine();
+				System.out.println("가입이 완료되었습니다.");
+				
+				Article member = new Article();
+				member.setMember(Id);
+				member.setPassword(Pw);
+				member.setName(name);
+				
+				mm.signup(member);
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 			}
 			
 			else if(s.equals("login")) {
@@ -138,10 +165,13 @@ public class App {
 				}
 			}
 			
+<<<<<<< HEAD
 			else if(s.equals("logout")) {
 				loginedmember = null;
 			}
 			
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 			else if(s.equals("list")) {
 				ArrayList<Article> articles = dao.listData();
 				
@@ -167,8 +197,11 @@ public class App {
 				System.out.println("보고싶은 게시물의 번호를 입력해주십시오.");
 				int id = sc.nextInt();
 				sc.nextLine();
+<<<<<<< HEAD
 				ArrayList<Like> likes = new ArrayList<Like>();
 				Like like = new Like();
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 				
 				
 				Article article = dao.getArticleById(id);
@@ -180,7 +213,11 @@ public class App {
 				else {
 					rprint(article);
 		    		while(true) {
+<<<<<<< HEAD
 		    			System.out.println("좋아요 : like / 싫어요 : unlike, 댓글 달기 : reply, 뒤로 가기 : back");
+=======
+		    			System.out.println("좋아요 : like / 댓글 달기 : reply / 뒤로 가기 : back");
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 		    			String a = sc.nextLine();
 		    			if(a.equals("reply")) {
 		    				if(loginedmember == null) {
@@ -199,6 +236,7 @@ public class App {
 		    				}
 		    			}
 		    			else if(a.equals("like")) {
+<<<<<<< HEAD
 		    				if(loginedmember == null) {
 	    					System.out.println("로그인이 필요합니다.");
 		    				}
@@ -233,6 +271,8 @@ public class App {
 		    				else {
 		    					System.out.println("좋아요 / 싫어요는 한 번만 누를 수 있습니다.");
 		    				}
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 		    			}
 		    			else if(a.equals("back")) {
 		    				break;
@@ -241,6 +281,7 @@ public class App {
 				}
 			}
 			
+<<<<<<< HEAD
 			else if(s.equals("sort")) {
 				System.out.println("정렬 대상을 입력해주십시오.(좋아요 : like / 조회수 : hit)");
 				String sortTarget = sc.nextLine();
@@ -258,6 +299,8 @@ public class App {
 				print(articles);
 			}
 			
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 			else if(s.equals("update")) {
 				System.out.println("");
 				System.out.println("수정을 원하는 게시물의 번호를 입력해주십시오.");
@@ -387,8 +430,12 @@ class login {
 class print {
 	void menu() {
 		System.out.println("원하는 기능에 맞게 입력해주십시오.");
+<<<<<<< HEAD
 		System.out.println("로그인 : login / 로그아웃 : logout");
 		System.out.println("회원가입 : signup");
+=======
+		System.out.println("로그인 : login / 회원가입 : signup");
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 		System.out.println("게시물 추가 : add");
 		System.out.println("게시물 조회 : list");
 		System.out.println("게시물 목록 조회 : read");
@@ -396,7 +443,10 @@ class print {
 		System.out.println("게시물 수정 : update");
 		System.out.println("게시물 삭제 : delete");
 		System.out.println("게시물 검색 : search");
+<<<<<<< HEAD
 		System.out.println("게시물 정렬 : sort");
+=======
+>>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
 		System.out.println("프로그램 종료 : exit");
 	}
 }
