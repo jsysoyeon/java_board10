@@ -13,10 +13,6 @@ public class Article {
 	private String writer;
 	private String regDate;
 	private ArrayList<Reply> replies = new ArrayList<>();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 2f751d3ff574c29ea6627ef30b0f95ba85a4eac1
 	private int views;
 	private int like;
 	private int unlike;
@@ -78,12 +74,6 @@ public class Article {
 		this.like = like;
 	}
 
-<<<<<<< HEAD
-=======
-=======
-	
->>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
->>>>>>> 2f751d3ff574c29ea6627ef30b0f95ba85a4eac1
 	public void addReply(Reply reply) {
 		replies.add(reply);
 	}
