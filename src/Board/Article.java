@@ -15,11 +15,7 @@ public class Article {
 	private ArrayList<Reply> replies = new ArrayList<>();
 	private ArrayList<Like> likes = new ArrayList<>();
 	private int views;
-	private int like;
-	private int unlike;
 	private int viewsmanage;
-	private int likemanage;
-	private int unlikemanage;
 
 	public ArrayList<Like> getLikes() {
 		return likes;
@@ -29,24 +25,6 @@ public class Article {
 		this.likes = likes;
 	}
 	
-	public int getUnlike() {
-		unlike++;
-		return unlike;
-	}
-
-	public void setUnlike(int unlike) {
-		this.unlike = unlike;
-	}
-
-	public int getUnlikemanage() {
-		unlikemanage = unlike;
-		return unlikemanage;
-	}
-
-	public void setUnlikemanage(int unlikemanage) {
-		this.unlikemanage = unlikemanage;
-	}
-
 	public int getViewsmanage() {
 		viewsmanage = views;
 		return viewsmanage;
@@ -56,14 +34,6 @@ public class Article {
 		this.viewsmanage = viewsmanage;
 	}
 
-	public int getLikemanage() {
-		likemanage = like;
-		return likemanage;
-	}
-
-	public void setLikemanage(int likemanage) {
-		this.likemanage = likemanage;
-	}
 
 	public int getViews() {
 		views++;
@@ -74,14 +44,6 @@ public class Article {
 		this.views = views;
 	}
 
-	public int getLike() {
-		like++;
-		return like;
-	}
-
-	public void setLike(int like) {
-		this.like = like;
-	}
 
 	public void addReply(Reply reply) {
 		replies.add(reply);
@@ -172,5 +134,33 @@ public class Article {
 	public void setBody(String body) {
 		this.body = body;
 	}
+	
+	public Like checkLikeByUserId(String checkUser) {
+		
+		for(int i = 0; i < likes.size(); i++) {
+			if(likes.get(i).getCheckUser().equals(checkUser)) {
+				return likes.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public int getCountOfLikes() {
+		int cnt = 0;
+		
+		for(int i = 0; i < likes.size(); i++) {
+			if(likes.get(i).getLikeFlag() == 1) {
+				cnt++;
+			}
+		}
+		
+		return cnt;
+		
+	}
+
+	public int getCountOfHates() {
+		return likes.size() - getCountOfLikes();
+	}
+
 	
 }

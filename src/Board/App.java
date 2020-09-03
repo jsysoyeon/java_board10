@@ -22,7 +22,8 @@ public class App {
     		System.out.println("작성자 : " + article.getWriter());
     		System.out.println("작성일 : " + article.getRegDate());
 			System.out.println("조회수 : " + article.getViewsmanage());
-			System.out.println("좋아요 : " + article.getLikemanage() + " / 싫어요 : " + article.getUnlikemanage());
+			System.out.println("좋아요 : " + article.getCountOfLikes());
+			System.out.println("싫어요 : " + article.getCountOfHates());
     		System.out.println("");
 		}
 	}
@@ -34,7 +35,8 @@ public class App {
 		System.out.println("내용 : " + article.getBody());
 		System.out.println("작성자 : " + article.getWriter());
 		System.out.println("조회수 : " + article.getViewsmanage());
-		System.out.println("좋아요 : " + article.getLikemanage() + " / 싫어요 : " + article.getUnlikemanage());
+		System.out.println("좋아요 : " + article.getCountOfLikes());
+		System.out.println("싫어요 : " + article.getCountOfHates());
 		System.out.println("");
 
 		ArrayList<Reply> reply = article.getReplies();
@@ -46,9 +48,11 @@ public class App {
 			System.out.println("작성일 : " + reply.get(i).getRegDate());
 			System.out.println("");
 		}
+		System.out.println("----------------------------------------------");
+		System.out.println("좋아요 : " + article.getCountOfLikes());
+		System.out.println("싫어요 : " + article.getCountOfHates());
 	}
 	
-	@SuppressWarnings({ "unused", "null" })
 	public void start() {
 		Scanner sc = new Scanner(System.in);
 		ArticleDao dao = new ArticleDao();
@@ -170,7 +174,6 @@ public class App {
 				
 				
 				Article article = dao.getArticleById(id);
-				
 				article.getViews();
 				
 				if(article == null) { 
@@ -180,7 +183,7 @@ public class App {
 				else {
 					rprint(article);
 		    		while(true) {
-		    			System.out.println("좋아요 : like / 싫어요 : unlike, 댓글 달기 : reply, 뒤로 가기 : back");
+		    			System.out.println("좋아요 / 싫어요 : like, 댓글 달기 : reply, 뒤로 가기 : back");
 		    			String a = sc.nextLine();
 		    			if(a.equals("reply")) {
 		    				if(loginedmember == null) {
@@ -200,23 +203,23 @@ public class App {
 		    			}
 		    			
 		    			else if(a.equals("like")) {
-		    				if(loginedmember == null) {
-		    					System.out.println("로그인이 필요합니다.");
-		    					break;
-			    			}
-			    			else {
-			    				String checkUser = loginedmember.getMember();
-			    				Like like = new Like(checkUser);
-			    				if(like.getCheckUser() == null) {
-				    				like.setCheckUser(checkUser);
-				    				article.addLike(like);
-				    				rprint(article);
-				    				article.getLike();
-			    				}
-			    				else {
-			    					System.out.println("좋아요 / 싫어요는 한 ID당 한 번씩만 가능합니다.");
-			    				}
-
+		    				if (loginedmember == null) {
+								System.out.println("로그인이 필요한 기능입니다.");
+							} else {
+								String checkUser = loginedmember.getMember();
+								System.out.println("좋아요/싫어요 (1. 좋아요, 2. 싫어요)");
+								int flag = Integer.parseInt(sc.nextLine());
+								String regDate = CurrentTime();
+								
+								Like target = article.checkLikeByUserId(checkUser);
+								
+								if(target == null) {
+									Like like = new Like(checkUser, flag, regDate);
+									article.addLike(like);
+			    					rprint(article);
+								} else {
+									System.out.println("좋아요 / 싫어요는 한 ID당 한 번씩만 가능");
+								}
 			    			}
 		    				
 		    			}
@@ -230,6 +233,9 @@ public class App {
 			else if(s.equals("sort")) {
 				System.out.println("정렬 대상을 입력해주십시오.(좋아요 : like / 조회수 : hit)");
 				String sortTarget = sc.nextLine();
+				if(sortTarget.equals("like") || sortTarget.equals("hit")) {
+					System.out.println("잘못 입력하셨습니다.");
+				}
 				System.out.println("정렬 방법을 입력해주십시오.(오름차순 : asc / 내림차순 : desc)");
 				String sortFlag = sc.nextLine();
 				

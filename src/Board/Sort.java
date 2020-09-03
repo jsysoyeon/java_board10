@@ -1,6 +1,7 @@
 package Board;
 
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class Sort implements Comparator <Article> {
 
@@ -26,13 +27,13 @@ public class Sort implements Comparator <Article> {
 		}
 		else if(sortTarget.equals("like")) {
 			if(sortFlag.equals("asc")) {
-				if(o1.getLikemanage() > o2.getLikemanage()) {
+				if(o1.getCountOfLikes() > o2.getCountOfLikes()) {
 					return 1;
 				}
 				return -1;
 			}
 			else if(sortFlag.equals("desc")) {
-				if(o1.getLikemanage() < o2.getLikemanage()) {
+				if(o1.getCountOfLikes() < o2.getCountOfLikes()) {
 					return 1;
 				}
 				return -1;

@@ -18,11 +18,6 @@ public class ArticleDao {
 		article1.setWriter("a");
 		article1.setRegDate("2020-08-27");
 		article1.setViews(150);
-		article1.setLike(30);
-		article1.setUnlike(2);
-		article1.setViews(150);
-		article1.setLike(30);
-		article1.setUnlike(2);
 
 		Article article2 = new Article();
 		article2.setId(2);
@@ -31,11 +26,6 @@ public class ArticleDao {
 		article2.setWriter("b");
 		article2.setRegDate("2020-08-27");
 		article2.setViews(37);
-		article2.setLike(15);
-		article2.setUnlike(5);
-		article2.setViews(37);
-		article2.setLike(15);
-		article2.setUnlike(5);
 
 		Article article3 = new Article();
 		article3.setId(3);
@@ -44,11 +34,6 @@ public class ArticleDao {
 		article3.setWriter("c");
 		article3.setRegDate("2020-08-27");
 		article3.setViews(350);
-		article3.setLike(3);
-		article3.setUnlike(0);
-		article3.setViews(350);
-		article3.setLike(3);
-		article3.setUnlike(0);
 		articles.add(article1);
 		articles.add(article2);
 		articles.add(article3);
