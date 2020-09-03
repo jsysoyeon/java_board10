@@ -10,4 +10,8 @@ public class Like {
 	public void setCheckUser(String checkUser) {
 		this.checkUser = checkUser;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2f751d3ff574c29ea6627ef30b0f95ba85a4eac1
