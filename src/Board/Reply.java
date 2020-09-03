@@ -22,12 +22,4 @@ public class Reply {
 	private String body;
 	private String writer;
 	private String regDate;
-<<<<<<< HEAD
 }
-=======
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> dcacdcd2df42df851078ad776a5c7097436a5371
->>>>>>> 2f751d3ff574c29ea6627ef30b0f95ba85a4eac1

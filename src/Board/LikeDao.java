@@ -33,8 +33,4 @@ public class LikeDao {
 		return likes.get(index);
 		
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2f751d3ff574c29ea6627ef30b0f95ba85a4eac1
