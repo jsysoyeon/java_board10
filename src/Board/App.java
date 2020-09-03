@@ -10,7 +10,6 @@ public class App {
 
 	ArticleDao dao = new ArticleDao();
 	MemberManage mm = new MemberManage();
-	LikeDao ld = new LikeDao();
 	
 	void print(ArrayList<Article> articles) {
 		
@@ -49,6 +48,7 @@ public class App {
 		}
 	}
 	
+	@SuppressWarnings({ "unused", "null" })
 	public void start() {
 		Scanner sc = new Scanner(System.in);
 		ArticleDao dao = new ArticleDao();
@@ -167,11 +167,11 @@ public class App {
 				System.out.println("보고싶은 게시물의 번호를 입력해주십시오.");
 				int id = sc.nextInt();
 				sc.nextLine();
-				ArrayList<Like> likes = new ArrayList<Like>();
-				Like like = new Like();
 				
 				
 				Article article = dao.getArticleById(id);
+				
+				article.getViews();
 				
 				if(article == null) { 
 					System.out.println("");
@@ -198,41 +198,27 @@ public class App {
 		    					rprint(article);
 		    				}
 		    			}
+		    			
 		    			else if(a.equals("like")) {
 		    				if(loginedmember == null) {
-	    					System.out.println("로그인이 필요합니다.");
-		    				}
-		    				
-				    		else {
-				    			if(like == null) {
-				    				article.getLike();
+		    					System.out.println("로그인이 필요합니다.");
+		    					break;
+			    			}
+			    			else {
+			    				String checkUser = loginedmember.getMember();
+			    				Like like = new Like(checkUser);
+			    				if(like.getCheckUser() == null) {
+				    				like.setCheckUser(checkUser);
+				    				article.addLike(like);
 				    				rprint(article);
-									like.setCheckUser(loginedmember.getMember());
-
-				    				ld.addData(like);
+				    				article.getLike();
 			    				}
 			    				else {
-			    					System.out.println("좋아요 / 싫어요는 한 번만 누를 수 있습니다.");
+			    					System.out.println("좋아요 / 싫어요는 한 ID당 한 번씩만 가능합니다.");
 			    				}
-		    				}
-		    			}
-		    			else if(a.equals("unlike")) {
-		    				if(like == null) {
-		    					if(loginedmember == null) {
-			    					System.out.println("로그인이 필요합니다.");
-			    				}
-				    			else {
-				    				article.getUnlike();
-				    				article.getLike();
-				    				rprint(article);
-									like.setCheckUser(loginedmember.getMember());
 
-				    				ld.addData(like);
-			    				}
-		    				}
-		    				else {
-		    					System.out.println("좋아요 / 싫어요는 한 번만 누를 수 있습니다.");
-		    				}
+			    			}
+		    				
 		    			}
 		    			else if(a.equals("back")) {
 		    				break;

@@ -13,12 +13,21 @@ public class Article {
 	private String writer;
 	private String regDate;
 	private ArrayList<Reply> replies = new ArrayList<>();
+	private ArrayList<Like> likes = new ArrayList<>();
 	private int views;
 	private int like;
 	private int unlike;
 	private int viewsmanage;
 	private int likemanage;
 	private int unlikemanage;
+
+	public ArrayList<Like> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(ArrayList<Like> likes) {
+		this.likes = likes;
+	}
 	
 	public int getUnlike() {
 		unlike++;
@@ -76,6 +85,10 @@ public class Article {
 
 	public void addReply(Reply reply) {
 		replies.add(reply);
+	}
+	
+	public void addLike(Like like) {
+		likes.add(like);
 	}
 	
 	public ArrayList<Reply> getReplies() {
